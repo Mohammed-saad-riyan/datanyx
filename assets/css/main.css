@@ -2286,11 +2286,14 @@ footer {
 }
 
 .footer-logo {
-  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 /* ==========================================================================
-   Countdown Style Start
+  Countdown Style Start
    ========================================================================== */
 #count {
   background: #f6f9f9;
