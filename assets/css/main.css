@@ -38,12 +38,18 @@ body {
   overflow-x: hidden;
 }
 
+h3 {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+
+
 h1,
 h2,
-h3,
 h4,
 h5 {
-  font-size: 36px;
+  font-size: 25px;
   font-weight: 700;
   font-family: 'Roboto', sans-serif;
 }
@@ -64,10 +70,10 @@ a a:focus {
 }
 
 p {
-  font-weight: 400;
+  font-weight: 300;
   font-family: 'Open Sans', sans-serif;
-  margin: 0px;
-  font-size: 14px;
+  margin: -12px;
+  font-size: 11px;
 }
 
 ul,
@@ -139,13 +145,13 @@ ol li {
 
 .section-title:before {
   content: '[';
-  color: #0099ff;
+  color: #000000;
   padding-right: 10px;
 }
 
 .section-title:after {
   content: ']';
-  color: #0099ff;
+  color: #000000;
   padding-left: 10px;
 }
 
@@ -997,7 +1003,74 @@ a.back-to-top:focus {
   margin-right: 10px;
 }
 
-#prizes .event-item {
+.event-item {
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.event-item img {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.overlay-text .content {
+  color: #fff;
+}
+
+.overlay-text h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* Desktop hover effects */
+@media (min-width: 768px) {
+  .event-item:hover .overlay-text {
+    opacity: 1;
+  }
+
+  /* Hide the text below images on desktop */
+  .prize-desc {
+    display: none;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .event-item .overlay-text {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .event-item:active .overlay-text,
+  .event-item:hover .overlay-text {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Hide the prize description on mobile */
+  .prize-desc {
+    display: none;
+  }
+}
+
+/* #prizes .event-item {
   position: relative;
 }
 
@@ -1044,7 +1117,7 @@ a.back-to-top:focus {
 
 #prizes .event-item .overlay-text:hover {
   opacity: 1;
-}
+} */
 
 /* ==========================================================================
    Video Section Style
@@ -1883,7 +1956,7 @@ h1 {
 
 .blog-item .descr {
   padding: 50px 25px 20px;
-  color: #212121;
+  color: #000000;
   position: relative;
 }
 
@@ -1896,7 +1969,7 @@ h1 {
   font-weight: 400;
   text-align: center;
   font-size: 20px;
-  color: #212121;
+  color: #000000;
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
@@ -2195,6 +2268,7 @@ footer {
 .social-icons-footer .twitter a i,
 .social-icons-footer .pinterest a i {
   color: #2b72ad !important;
+  gap
 }
 
 .social-icons-footer .twitter a:hover {
@@ -2740,15 +2814,29 @@ h2#last-stats {
   margin-bottom: 20px;
 }
 
-img#footer-logo {
-  width: 200px;
+img#footer-logo,
+img#footer-logo1 {
+  max-width: 100%;
+  /* Ensures the image takes full width of its container */
+  height: auto;
+  /* Maintains the aspect ratio */
   margin-top: 50px;
+  display: block;
+  /* Ensures proper alignment */
 }
 
-img#footer-logo1 {
-  width: 300px;
-  margin-top: 50px;
+@media (max-width: 768px) {
+
+  img#footer-logo,
+  img#footer-logo1 {
+    width: 150px;
+    /* Reduce the size for smaller screens */
+    margin-top: 30px;
+    /* Adjust margin for smaller screens */
+  }
 }
+
+
 
 /* section#faq {
   background-color: #fcfd9b;
@@ -2855,7 +2943,7 @@ h3 {
 }
 
 .blog-item .descr {
-  background: #1c1c1c;
+  background: #000000;
   color: whitesmoke;
 }
 
@@ -2911,4 +2999,88 @@ li.stylish-list {
 
 .prize-desc {
   display: none;
+}
+
+.footer-about-us {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  /* Adjust padding as needed */
+  background-color: #0b0a0a;
+  /* Background color for the section */
+}
+
+.footer-about-block {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #070707;
+  /* Background color for each block */
+  border: 1px solid #0e0d0d;
+  /* Border for the blocks */
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* Transition for hover effect */
+  display: flex;
+  /* Use flexbox for inner layout */
+  align-items: flex-start;
+  /* Align items at the start (top) */
+}
+
+.footer-about-image {
+  width: 50px;
+  /* Set width for images */
+  height: 50px;
+  /* Set height for images */
+  margin-right: 15px;
+  /* Space between image and text */
+}
+
+.footer-about-text {
+  display: flex;
+  flex-direction: column;
+  /* Stack heading and paragraph vertically */
+}
+
+.footer-about-block:hover {
+  transform: scale(1.05);
+  /* Scale up on hover */
+  box-shadow: 0 4px 20px rgb(255, 255, 255);
+  /* Shadow effect on hover */
+}
+
+.footer-about-us h2 {
+  margin-top: 0;
+  /* Remove top margin for headings */
+  color: white;
+  text-align: left;
+  /* Align text to the left */
+  text-shadow: wheat;
+  /* Text shadow effect */
+}
+
+.footer-about-us p {
+  color: #faf3f3;
+  /* Paragraph text color */
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+  .footer-about-us {
+    flex-direction: column;
+    /* Stack blocks vertically */
+    align-items: center;
+    /* Center align the blocks */
+  }
+
+  .footer-about-block {
+    width: 90%;
+    /* Make blocks take up most of the width */
+    margin: 10px 0;
+    /* Adjust margins for vertical spacing */
+  }
+
+  .footer-about-image {
+    margin-bottom: 10px;
+    /* Add space below the image for mobile layout */
+  }
 }
